@@ -1,3 +1,5 @@
+'use strict';
+
 function getType(obj) {
     return obj.constructor.name;
 }
@@ -15,10 +17,14 @@ object.foo(); // Object
 
 
 function foo() {
-    console.log('foo: ' + getType(this));
+    try {
+        console.log('foo: ' + getType(this));
+    } catch(err) {
+        console.log('this: ' + this);
+    }
 }
 
 // create new object by using foo as constructor
 new foo(); // foo
 // call method directly -> the global scope is the context
-foo(); // window or undef
+foo(); // window or undef(this will be undef -> TypeError)

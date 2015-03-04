@@ -2,7 +2,7 @@ var module = (function() {
     var privateProperty = 'foo';
 
     function privateMethod(args) {
-        // do something
+       console.log('privateMethod: ' + args);
     }
 
     return {
@@ -10,11 +10,19 @@ var module = (function() {
         publicProperty: "",
 
         publicMethod: function(args) {
-            // do something
+            console.log('publicMethod: ' + args);
         },
 
         privilegedMethod: function(args) {
             privateMethod(args);
+        },
+
+        getPrivateProperty: function(){
+            return privateProperty;
         }
     }
-})();
+})(); // this is always a singleton
+
+module.publicMethod(1);
+module.privilegedMethod(2);
+console.log(module.getPrivateProperty());

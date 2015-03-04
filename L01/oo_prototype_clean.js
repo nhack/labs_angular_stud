@@ -43,19 +43,14 @@ function User(first, last, age, email, password) {
     }
 }
 
+User.prototype = Object.create(Person.prototype);
+User.prototype.constructor = User;
+
 var marius = new User('Marius', 'Cristea', 29, 'cristea12@gmail.com', 'marius');
 console.log(marius.getPassword());
-console.log(marius.toString()); // not the expected string
-
-User.prototype = Object.create(Person.prototype);
-marius = new User('Marius', 'Cristea', 29, 'cristea12@gmail.com', 'marius');
-console.log(marius.getPassword());
-console.log(marius.toString()); // the expected string
+console.log(marius.toString()); 
 
 function getType(obj) {
     return obj.constructor.name;
 }
-console.log('Type of marius: ' + getType(marius)); // Person (not User)
-
-User.prototype.constructor = User;
-console.log('Type of marius: ' + getType(marius)); // User
+console.log('Type of marius: ' + getType(marius));

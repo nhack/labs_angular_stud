@@ -27,4 +27,8 @@ function User(first, last, age, password) {
 
 marius = new User('Marius', 'Cristea', 29, 'marius');
 console.log(marius.getPassowrdLength());
-console.log(marius.toString());
+console.log(marius.toString());\
+
+person = new Person(); // create dummy person
+console.log(person.toString.call(marius, '-')); // call toString for marius in the context of a person
+console.log(person.toString.apply(marius, ['~'])); // apply (params are in a vector) toString for marius in the context of a person

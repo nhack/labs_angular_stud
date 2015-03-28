@@ -37,21 +37,23 @@ init = function($) {
     // to consume
 
     $.subscribe("/search/tags", function(e, tags) {
-        $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
-                tags: tags,
-                tagmode: "any",
-                format: "json"
-            },
+        // return a promise insted of handle it directly
+        var resultPromise = $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?", {
+            tags: tags,
+            tagmode: "any",
+            format: "json"
+        });
 
-            function(data) {
-                if (!data.items.length) {
-                    return;
-                }
+        // when the promise is resolved publish the result
+        resultPromise.done(function(data) {
+            if (!data.items.length) {
+                return;
+            }
 
-                $.publish("/search/resultSet", {
-                    items: data.items
-                });
+            $.publish("/search/resultSet", {
+                items: data.items
             });
+        });
     });
 };
 

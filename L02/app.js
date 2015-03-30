@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('store', []);
+    var app = angular.module('pizzaStore', []);
 
     var pizza = {
         name: '4 STAGIONI',
@@ -7,4 +7,8 @@
         weight: 550,
         ingredients: 'sos rosii, mozzarella, ciuperci, salam, sunca presata, oregano, anghinare'
     }
+
+    app.controller('StoreController', function() {
+        this.product = pizza;
+    });
 })();

@@ -9,13 +9,13 @@
 
 <body ng-controller='StoreController as store'>
     <div class="container">
-        <div class="product row">
+        <div ng-hide='store.product.soldOut' class="product row">
             <h3>
         		{{store.product.name}} ({{store.product.weight}} g)
         		<em class="pull-right">{{store.product.price}} RON</em>
       		</h3>
         </div>
-        <button>Add to Cart</button>
+        <button ng-show='store.product.canPurchase'>Add to Cart</button>
     </div>
 </body>
 

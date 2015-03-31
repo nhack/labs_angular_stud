@@ -9,11 +9,12 @@
 
 <body ng-controller='StoreController as store'>
     <div class="container">
-        <div class="product row">
+        <div ng-repeat='product in store.products' class="product row">
             <h3>
-        		{{store.product.name}} ({{store.product.weight}} g)
-        		<em class="pull-right">{{store.product.price}} RON</em>
+        		{{product.name}} ({{product.weight}} g)
+        		<em class="pull-right">{{product.price}} RON</em>
       		</h3>
+            <p> {{product.ingredients}} </p>
             <button>Add to Cart</button>
         </div>
     </div>

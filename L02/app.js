@@ -11,9 +11,9 @@
         price: 25,
         weight: 450,
         ingredients: 'sos rosii, mozzarella, salam picant, oregano'
-    }];
+    }]
 
     app.controller('StoreController', function() {
-        
+        this.products = pizzas;
     });
 })();

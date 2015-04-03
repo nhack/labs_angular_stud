@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app='pizzaStore'>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body ng-controller='StoreController as store'>
+    <div class="container">
+        <div ng-repeat='product in store.products' class="product row">
+            <h3>
+        		{{product.name}} ({{product.weight}} g)
+        		<em class="pull-right">{{product.price}} RON</em>
+      		</h3>
+            <p> {{product.ingredients}} </p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="pizza.css" />
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </head>
@@ -19,7 +20,14 @@
             <p> {{product.ingredients}} </p>
             <!-- Image Gallery  -->
             <div class="gallery">
-                <img ng-src='{{product.images[0]}}' />
+                <div class="img-wrap">
+                    <img ng-src='{{product.images[0]}}' />
+                </div>
+                <ul class='img-thumbnails clearfix'>
+                    <li class='small-image pull-left thumbnail'>
+                        <img ng-src='{{product.images[0]}}' />
+                    </li>
+                </ul>
             </div>
             <button>Add to Cart</button>
         </div>

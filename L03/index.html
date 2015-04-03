@@ -8,13 +8,19 @@
 </head>
 
 <body ng-controller='StoreController as store'>
-    <div class="container">
-        <div ng-repeat='product in store.products' class="product row">
+    <!--  Products Container  -->
+    <div class="list-group">
+        <!--  Product Container  -->
+        <div ng-repeat='product in store.products' class="list-group-item">
             <h3>
-        		{{product.name}} ({{product.weight}} g)
-        		<em class="pull-right">{{product.price}} RON</em>
-      		</h3>
+                {{product.name}} ({{product.weight}} g)
+                <em class="pull-right">{{product.price | currency}}</em>
+            </h3>
             <p> {{product.ingredients}} </p>
+            <!-- Image Gallery  -->
+            <div class="gallery">
+                <img ng-src='{{product.images[0]}}' />
+            </div>
             <button>Add to Cart</button>
         </div>
     </div>

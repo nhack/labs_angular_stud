@@ -18,29 +18,29 @@
                 <em class="pull-right">{{product.price | currency}}</em>
             </h3>
             <!-- Image Gallery  -->
-            <div class="gallery" ng-show='product.images.length'>
-                <img class="img img-circle img-thumbnail center-block" ng-src='{{product.images[0]}}' />
+            <div class="gallery" ng-show='product.images.length' ng-controller='GalleryController as gallery'>
+                <img class="img img-circle img-thumbnail center-block" ng-src='{{product.images[gallery.current]}}' />
                 <ul class='clearfix'>
                     <li ng-repeat='image in product.images' class='small-image pull-left thumbnail'>
                         <img ng-src='{{image}}' />
                     </li>
                 </ul>
             </div>
-            <section class="tab">
+            <section class="tab" ng-controller='TabController as tab'>
                 <ul class="nav nav-pills">
-                    <li><a href>Ingredients</a></li>
-                    <li><a href>Extras</a></li>
-                    <li><a href>Reviews</a></li>
+                    <li ng-class='{active: tab.isSet(1)}'><a href ng-click='tab.setTab(1)'>Ingredients</a></li>
+                    <li ng-class='{active: tab.isSet(2)}'><a href ng-click='tab.setTab(2)'>Extras</a></li>
+                    <li ng-class='{active: tab.isSet(3)}'><a href ng-click='tab.setTab(3)'>Reviews</a></li>
                 </ul>
-                <div>
+                <div ng-show='tab.isSet(1)'>
                     <h4>Ingredients</h4>
-                    <blockquote></blockquote>
+                    <blockquote>{{product.ingredients}}</blockquote>
                 </div>
-                <div>
-                    <h4>Extras</h4>
-                    <blockquote>Chilly </blockquote>
+                <div ng-show='tab.isSet(2)'>
+                    <h4>Extras: </h4>
+                    <blockquote>{{product.extras}}</blockquote>
                 </div>
-                <div>
+                <div ng-show='tab.isSet(3)'>
                     <h4>Reviews</h4>
                     <blockquote></blockquote>
                 </div>

@@ -5,6 +5,9 @@
         return {
             restrict: 'E',
             templateUrl: 'components/product/review/review.htm',
+            scope: {
+                product: '='
+            },
             controller: function(SERVER, $http) {
                 this.review = {};
 
@@ -23,7 +26,16 @@
                         .error(function() {
                             console.error('Error while saving: ' + product);
                         });
-                }
+                };
+
+            },
+            link: function(scope, element) {
+                element.find('.expandable').on('click', function(event) {
+                    var siblings = $(event.target).siblings('li');
+                    $.each(siblings, function(index, li) {
+                        $(li).toggleClass('hidden');
+                    });
+                });
             },
             controllerAs: 'reviewCtrl'
         }

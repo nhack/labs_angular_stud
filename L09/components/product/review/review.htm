@@ -1,16 +1,16 @@
 <div>
     <!--  Product Reviews List -->
     <ul>
-        <h4>Reviews</h4>
-        <li>
-            <blockquote ng-repeat='review in pizza.product.reviews'>
+        <h4 class='clickable expandable'>Reviews ({{product.reviews.length}})</h4>
+        <li ng-repeat='review in product.reviews'>
+            <blockquote>
                 <strong>{{review.stars}} Stars</strong> {{review.body}}
                 <cite class="clearfix">-{{review.author}} on {{review.createdOn | date}}</cite>
             </blockquote>
         </li>
     </ul>
     <!--  Review Form -->
-    <form name="reviewForm" ng-submit='reviewForm.$valid && reviewCtrl.addReview(pizza.product)' novalidate>
+    <form name="reviewForm" ng-submit='reviewForm.$valid && reviewCtrl.addReview(product)' novalidate>
         <!--  Live Preview -->
         <blockquote>
             <strong>{{reviewCtrl.review.stars}} Stars</strong> {{reviewCtrl.review.body}}
